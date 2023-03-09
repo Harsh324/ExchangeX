@@ -12,3 +12,8 @@ class TestExchange():
     def test_parse_api(self):
         pass
 
+    def test_exception(self):
+
+        """Documenation"""
+        pass
+
