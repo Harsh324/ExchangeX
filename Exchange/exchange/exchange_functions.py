@@ -15,3 +15,8 @@ class Exchange():
 
         """Documentation"""
         pass
+
+    def exception(self):
+        
+        """Documentation"""
+        pass
