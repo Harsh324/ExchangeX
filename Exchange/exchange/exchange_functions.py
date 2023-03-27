@@ -20,8 +20,9 @@ class Exchange():
         print("IN parse_api")
         response = requests.request("GET", self.url + append, headers = self.headers, data = self.payload)
         status = self.exception(response.status_code)
-        print(status)
-        return response.json(), status
+        if(status):
+            return response.json(), status
+        return {}, status
 
     
 
@@ -64,7 +65,7 @@ class Exchange():
         print(conversiondict)
 
 
-    def exception(self, status):
+    def exception(self, status, ):
         
         """Documentation"""
         
