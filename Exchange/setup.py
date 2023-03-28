@@ -4,7 +4,7 @@ setup(
     name = 'exchange',
     packages = find_packages(include = ['exchange']),
     version = '0.1.0',
-    description = 'Exchanhe package',
+    description = 'Exchange package',
     author = 'Harsh Tripathi',
     license = '',
     install_requires = [],
