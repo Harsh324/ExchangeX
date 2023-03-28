@@ -1,3 +1,4 @@
+import os
 import sqlite3
 
 class User:
@@ -9,6 +10,9 @@ class UserManager:
     def __init__(self, db_file):
         self.db_file = db_file
         self.create_table()
+
+    if not os.path.exists('databases'):
+            os.makedirs('databases')
 
     def create_table(self):
         conn = sqlite3.connect(self.db_file)
@@ -40,18 +44,3 @@ class UserManager:
         else:
             print("Invalid username or password.")
 
-if __name__ == '__main__':
-    user_manager = UserManager('users.db')
-    print("1. Register")
-    print("2. Login")
-    choice = input("Enter your choice: ")
-    if choice == '1':
-        username = input("Enter a username: ")
-        password = input("Enter a password: ")
-        user_manager.register(username, password)
-    elif choice == '2':
-        username = input("Enter your username: ")
-        password = input("Enter your password: ")
-        user_manager.login(username, password)
-    else:
-        print("Invalid choice. Please try again.")
