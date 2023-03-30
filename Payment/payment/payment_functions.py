@@ -7,7 +7,7 @@ class Payment():
         self.reciever = receiverAccountNo
         self.amount = amount
         self.date = date
-        self.connPay = Sq.connect('payment.db').cursor()
+        self.connPay = Sq.connect('payment.db')
         #self.userObj = User()
     
 
@@ -24,21 +24,21 @@ class Payment():
 
         """Documentation"""
         connObj = self.connect()
+        
         if(connObj['sender']['status'] == True and connObj['receiver']['status'] == True):
             if(connObj['sender']['balance'] >= self.amount):
-                self.connPay.execute("INSERT INTO payments VALUES (?, ?, ?, ?)", (connObj['sender']['id'], connObj['receiver']['id'], self.amount, self.date))
+                self.connPay.cursor().execute("INSERT INTO payments VALUES (?, ?, ?, ?)", (connObj['sender']['id'], connObj['receiver']['id'], self.amount, self.date))
             else:
                 return {'status' : False, 'info' : "Not sufficient balance to perform transaction"}
 
         else:
             return {'status' : False, 'info' : "Unable to validate reciever"}
 
-
-
         self.disconnect()
-        pass
 
     def disconnect(self):
 
         """Documentation"""
+        self.connPay.commit()
+        self.connPay.close()
         pass
