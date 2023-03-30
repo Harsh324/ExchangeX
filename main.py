@@ -1,5 +1,8 @@
 from kyc import KYCForm, kyc_form
 from login import UserManager
+import Exchange.exchange.exchange_functions as Ex
+
+import User.user.user_functions as User
 
 print("1. Fill kyc form")
 print("2. Login/Register")
