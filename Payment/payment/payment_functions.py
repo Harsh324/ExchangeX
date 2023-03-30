@@ -1,4 +1,5 @@
 import sqlite3 as Sq
+import os
 
 class Payment():
 
@@ -7,6 +8,8 @@ class Payment():
         self.reciever = receiverAccountNo
         self.amount = amount
         self.date = date
+        if not os.path.exists('database'):
+            os.makedirs('database')
         self.connPay = Sq.connect('payment.db')
         #self.userObj = User()
     
