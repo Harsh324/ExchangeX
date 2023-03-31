@@ -19,6 +19,13 @@ class Kyc():
 
     def addToDatabase(self):
 
+        """
+        ### Function Description : 
+
+            This Function is get all the kyc details updated in database\n
+        
+        """
+
         self.kycObj.cursor().execute('''
             CREATE TABLE IF NOT EXISTS kyc (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
