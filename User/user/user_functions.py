@@ -9,6 +9,11 @@ class User():
             os.makedirs('database')
 
         self.connUser = Sq.connect('user.db')
+        self.connUser.cursor().execute('''
+            CREATE TABLE IF NOT EXISTS users
+            (userId TEXT PRIMARY KEY, kyc BOOL, balance FLOAT)
+        ''')
+        self.connUser.commit()
 
     
     def validateUser(self, userId):

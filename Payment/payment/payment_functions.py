@@ -13,6 +13,16 @@ class Payment():
         if not os.path.exists('database'):
             os.makedirs('database')
         self.connPay = Sq.connect('payment.db')
+        self.connPay.cursor().execute('''
+            CREATE TABLE IF NOT EXISTS payments
+            (id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sender TEXT,
+            reciever TEXT,
+            amount FLOAT,
+            date TEXT
+            )
+        ''')
+        self.connPay.commit()
         self.userObj = user.User()
     
 
