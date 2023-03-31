@@ -17,6 +17,22 @@ class Login():
 
     def validateUser(self, userId, passWord):
         
+        """
+        ### Function Description : 
+
+            This Function takes the userId and password as input and\n
+            validates whether the user with the given credentials exists or not.\n
+            Returns the json object.\n
+            
+        ### Function Parameters : 
+            
+            # userId : 
+                This Parameter is the unique Id of a user.\n
+            
+            # password : 
+                This Parameter is the password of the user.\n
+        """
+        
         user = self.logObj.cursor().execute('SELECT * FROM logs WHERE userId = ? AND password = ?',
                                  (userId, passWord)).fetchone()
         self.logObj.close()
@@ -48,6 +64,23 @@ class Register():
         self.userObj.commit()
 
     def register(self, userId, password):
+
+        """
+        ### Function Description : 
+
+            This Function takes the userId and password as input and\n
+            registers whether the user with the given credentials in the database.\n
+            Returns the json object of status.\n
+            
+        ### Function Parameters : 
+            
+            # userId : 
+                This Parameter is the unique Id of a user.\n
+            
+            # password : 
+                This Parameter is the password of the user.\n
+        """
+
         try:
             self.logObj.cursor().execute('INSERT INTO logs VALUES (?, ?)', (userId, password))
             self.logObj.commit()
